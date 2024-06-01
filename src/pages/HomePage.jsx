@@ -35,7 +35,7 @@ const HomePage = () => {
       {/* <Results text={text} input={input} /> */}
 
       <div>
-        <button>Start Typing</button>
+        <button>Start typing</button>
       </div>
 
       <div className="btn-restart hidden">

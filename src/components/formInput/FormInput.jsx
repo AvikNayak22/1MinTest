@@ -1,18 +1,12 @@
 import { useState } from "react";
 import styles from "./FormInput.module.css";
 
-const FormInput = () => {
-  const [text, setText] = useState("");
-  const [input, setInput] = useState("");
-
+const FormInput = ({ text, input, setInput, textImported }) => {
   return (
-    <div>
+    <div className={!textImported ? "hidden" : ""}>
       <div className={styles.container}>
         <div className={styles.textDisplay}>
-          <h3>
-            {/* some text */}
-            {input}
-          </h3>
+          <h3>{text}</h3>
         </div>
         <div className={styles.formField}>
           <form>

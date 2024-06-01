@@ -4,7 +4,7 @@ import axios from "axios";
 
 const EndpointAPI = "https://api.quotable.io/random";
 
-const TextGenerator = () => {
+const TextGenerator = ({ getParagraph, textImported, setTextImported }) => {
   const [displayText, setDisplayText] = useState("");
 
   const getText = async () => {
@@ -16,17 +16,25 @@ const TextGenerator = () => {
       paragraph = paragraph + " " + new_paragraph;
       setDisplayText(paragraph);
     }
+
+    return paragraph;
+  };
+
+  const sendDataUp = async () => {
+    const value = await getText();
+    getParagraph(value);
+    setTextImported(true);
   };
 
   return (
-    <div>
+    <div className={textImported ? "hidden" : ""}>
       <div>
         <article>
           <p>{displayText}</p>
         </article>
       </div>
 
-      <button onClick={getText} className={styles.btn}>
+      <button onClick={sendDataUp} className={styles.btn}>
         Generate words
       </button>
     </div>

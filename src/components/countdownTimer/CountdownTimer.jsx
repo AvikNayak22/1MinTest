@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./CountdownTimer.module.css";
+import { AppContext } from "../../context/AppContext";
 
-const CountdownTimer = ({ startTime, setFinished }) => {
+const CountdownTimer = () => {
+  const { startTime, setFinished } = useContext(AppContext);
   const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
@@ -15,9 +17,11 @@ const CountdownTimer = ({ startTime, setFinished }) => {
     return () => clearTimeout(timer);
   }, [startTime, timeLeft]);
 
-  if (timeLeft <= 0) {
-    setFinished(true);
-  }
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setFinished(true);
+    }
+  }, [timeLeft, setFinished]);
 
   return (
     <div className={startTime ? "" : "hidden"}>

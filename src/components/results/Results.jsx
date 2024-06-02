@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Results.module.css";
+import { AppContext } from "../../context/AppContext";
 
-const Results = ({ text, input, finished }) => {
+const Results = () => {
+  const { text, input, finished } = useContext(AppContext);
   const textArray = text.split(" ").slice(1);
   const inputArray = input.split(" ");
 
@@ -10,8 +12,6 @@ const Results = ({ text, input, finished }) => {
   const [correctWords, setCorrectWords] = useState(0);
 
   const accuracy = Math.round((correctWords / totalWords) * 100);
-
-  console.log(inputArray);
 
   useEffect(() => {
     setTotalWords(inputArray.length);

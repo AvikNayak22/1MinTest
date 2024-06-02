@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./TextGenerator.module.css";
 import axios from "axios";
+import { AppContext } from "../../context/AppContext";
 
 const EndpointAPI = "https://api.quotable.io/random";
 
-const TextGenerator = ({ getParagraph, textImported, setTextImported }) => {
+const TextGenerator = () => {
   const [displayText, setDisplayText] = useState("");
+  const { getParagraph, textImported, setTextImported } =
+    useContext(AppContext);
 
   const getText = async () => {
     let paragraph = "";

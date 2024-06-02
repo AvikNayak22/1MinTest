@@ -1,20 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import TextGenerator from "../components/textGenerator/TextGenerator";
 import FormInput from "../components/formInput/FormInput";
 import Results from "../components/results/Results";
 import CountdownTimer from "../components/countdownTimer/CountdownTimer";
+import { AppContext } from "../context/AppContext";
 
 const HomePage = () => {
-  const [text, setText] = useState("");
-  const [input, setInput] = useState("");
-  const [textImported, setTextImported] = useState(false);
-
-  const [startTime, setStartTime] = useState(false);
-  const [finished, setFinished] = useState(false);
-
-  const getParagraph = (paragraph) => {
-    setText(paragraph);
-  };
+  const { textImported, setStartTime, finished } = useContext(AppContext);
 
   return (
     <div>
@@ -24,27 +16,13 @@ const HomePage = () => {
           <h2>Check your typing speed right now!</h2>
         </div>
       </div>
-      <TextGenerator
-        getParagraph={getParagraph}
-        textImported={textImported}
-        setTextImported={setTextImported}
-      />
+      <TextGenerator />
 
-      <CountdownTimer
-        startTime={startTime}
-        setStartTime={setStartTime}
-        setFinished={setFinished}
-      />
+      <CountdownTimer />
 
-      <FormInput
-        text={text}
-        input={input}
-        setInput={setInput}
-        textImported={textImported}
-        finished={finished}
-      />
+      <FormInput />
 
-      <Results text={text} input={input} finished={finished} />
+      <Results />
 
       <div>
         <button

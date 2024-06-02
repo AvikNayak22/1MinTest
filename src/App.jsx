@@ -1,12 +1,14 @@
 import "./App.css";
-
 import HomePage from "./pages/HomePage";
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
-    <div className="main__wrapper">
-      <HomePage />
-    </div>
+    <AppProvider>
+      <div className="main__wrapper">
+        <HomePage />
+      </div>
+    </AppProvider>
   );
 }
 

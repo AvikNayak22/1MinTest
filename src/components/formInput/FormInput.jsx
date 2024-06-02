@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 
+import { useContext } from "react";
 import styles from "./FormInput.module.css";
+import { AppContext } from "../../context/AppContext";
 
-const FormInput = ({ text, input, setInput, textImported, finished }) => {
+const FormInput = () => {
+  const { text, input, setInput, textImported, finished } =
+    useContext(AppContext);
   let textArray = text.split("");
-
   textArray = textArray.slice(1);
 
   const formattedText = textArray.map((char, index) => {

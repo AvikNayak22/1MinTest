@@ -1,10 +1,37 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+import styles from "./Results.module.css";
 
-const Results = ({ text, input }) => {
+const Results = ({ text, input, finished }) => {
+  const textArray = text.split(" ").slice(1);
+  const inputArray = input.split(" ");
+
+  const [totalWords, setTotalWords] = useState(0);
+  const [correctWords, setCorrectWords] = useState(0);
+
+  const accuracy = Math.round((correctWords / totalWords) * 100);
+
+  console.log(inputArray);
+
+  useEffect(() => {
+    setTotalWords(inputArray.length);
+    let correctWordsCounter = 0;
+
+    inputArray.forEach((element, index) => {
+      if (inputArray[index] === textArray[index]) {
+        correctWordsCounter += 1;
+      }
+    });
+    setCorrectWords(correctWordsCounter);
+  }, [finished]);
+
   return (
-    <div>
-      <h1>Results:</h1>
-      <h2>{input}</h2>
+    <div className={finished ? "" : "hidden"}>
+      <div className={styles.container}>
+        <h2>Total: {totalWords}</h2>
+        <h2>Correct: {correctWords}</h2>
+        <h2>Accuracy: {accuracy} %</h2>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./CountdownTimer.module.css";
 
-const CountdownTimer = ({ startTime, setStartTime, setFinished }) => {
+const CountdownTimer = ({ startTime, setFinished }) => {
   const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
@@ -14,6 +14,10 @@ const CountdownTimer = ({ startTime, setStartTime, setFinished }) => {
 
     return () => clearTimeout(timer);
   }, [startTime, timeLeft]);
+
+  if (timeLeft <= 0) {
+    setFinished(true);
+  }
 
   return (
     <div className={startTime ? "" : "hidden"}>

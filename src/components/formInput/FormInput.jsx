@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+
 import styles from "./FormInput.module.css";
 
-const FormInput = ({ text, input, setInput, textImported }) => {
+const FormInput = ({ text, input, setInput, textImported, finished }) => {
   let textArray = text.split("");
 
   textArray = textArray.slice(1);
@@ -33,6 +33,7 @@ const FormInput = ({ text, input, setInput, textImported }) => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                disabled={finished ? true : false}
                 placeholder="Type here..."
               />
             </div>

@@ -41,21 +41,27 @@ const HomePage = () => {
         input={input}
         setInput={setInput}
         textImported={textImported}
+        finished={finished}
       />
 
-      {/* <Results text={text} input={input} /> */}
+      <Results text={text} input={input} finished={finished} />
 
       <div>
         <button
           onClick={() => setStartTime(true)}
-          className={!textImported ? "hidden" : ""}
+          className={!textImported || finished ? "hidden" : ""}
         >
           Start typing
         </button>
       </div>
 
-      <div className="btn-restart hidden">
-        <button>Restart</button>
+      <div className={finished ? "" : "hidden"}>
+        <button
+          onClick={() => window.location.reload(false)}
+          className="btn-restart"
+        >
+          Restart
+        </button>
       </div>
     </div>
   );

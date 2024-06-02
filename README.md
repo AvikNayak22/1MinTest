@@ -2,6 +2,8 @@
 
 1MinTest is a typing speed test application that allows users to measure their typing speed and accuracy in one minute. It fetches random text from an API for the user to type and displays the results at the end of the test.
 
+**Deployed Site:** [https://1mintest.netlify.app](https://1mintest.netlify.app/)
+
 ## Features
 
 - **Random Text Generation:** Fetches random paragraphs from an external API for users to type.

@@ -8,13 +8,16 @@ const HomePage = () => {
   const [input, setInput] = useState("");
   const [textImported, setTextImported] = useState(false);
 
+  const [startTime, setStartTime] = useState(false);
+  const [finished, setFinished] = useState(false);
+
   const getParagraph = (paragraph) => {
     setText(paragraph);
   };
 
   return (
     <div>
-      <h1 className="app-title">Speedytyper</h1>
+      <h1 className="app-title">1MinTest</h1>
 
       <div className="welcome-title">
         <h2>Check your typing speed right now!</h2>

@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
-import styles from "./Results.module.css";
+import { Box } from "@chakra-ui/react";
 import { AppContext } from "../../context/AppContext";
 
 const Results = () => {
@@ -26,13 +25,19 @@ const Results = () => {
   }, [finished]);
 
   return (
-    <div className={finished ? "" : "hidden"}>
-      <div className={styles.container}>
-        <h2>Total: {totalWords}</h2>
-        <h2>Correct: {correctWords}</h2>
-        <h2>Accuracy: {accuracy} %</h2>
-      </div>
-    </div>
+    <Box
+      className={finished ? "" : "hidden"}
+      margin="2rem auto 0"
+      color="black.500"
+      fontFamily="Karla"
+      padding="1rem"
+      maxWidth="300px"
+      fontSize="1rem"
+    >
+      <Box as="h2">Total: {totalWords}</Box>
+      <Box as="h2">Correct: {correctWords}</Box>
+      <Box as="h2">Accuracy: {accuracy} %</Box>
+    </Box>
   );
 };
 

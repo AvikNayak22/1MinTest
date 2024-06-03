@@ -1,5 +1,5 @@
+import { Box, Button } from "@chakra-ui/react";
 import { useContext, useState } from "react";
-import styles from "./TextGenerator.module.css";
 import axios from "axios";
 import { AppContext } from "../../context/AppContext";
 
@@ -30,17 +30,35 @@ const TextGenerator = () => {
   };
 
   return (
-    <div className={textImported ? "hidden" : ""}>
-      <div>
-        <article>
-          <p>{displayText}</p>
-        </article>
-      </div>
+    <Box display={textImported ? "none" : "block"} fontFamily="Karla">
+      <Box>
+        <Box
+          as="article"
+          margin="2rem auto 0"
+          backgroundColor="gray.100"
+          border="2px solid"
+          borderColor="gray.500"
+          borderRadius="0.25rem"
+          padding="1rem"
+          maxW="80%"
+        >
+          <Box as="p" color="black.500" textAlign="left" fontSize="1.1rem">
+            {displayText}
+          </Box>
+        </Box>
+      </Box>
 
-      <button onClick={sendDataUp} className={styles.btn}>
+      <Button
+        onClick={sendDataUp}
+        margin="0.7rem"
+        color="white"
+        backgroundColor="black"
+        _focus={{ scale: 0.98, backgroundColor: "black.500" }}
+        _hover={{ backgroundColor: "black.500" }}
+      >
         Generate words
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
 

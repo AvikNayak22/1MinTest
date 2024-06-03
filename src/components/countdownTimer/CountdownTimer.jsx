@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
-import styles from "./CountdownTimer.module.css";
+import { Box, Text } from "@chakra-ui/react";
 import { AppContext } from "../../context/AppContext";
 
 const CountdownTimer = () => {
@@ -24,9 +23,11 @@ const CountdownTimer = () => {
   }, [timeLeft, setFinished]);
 
   return (
-    <div className={startTime ? "" : "hidden"}>
-      <p className={styles.timeText}>Time left: {timeLeft}</p>
-    </div>
+    <Box display={startTime ? "block" : "none"} fontFamily="Karla">
+      <Text margin="1rem" fontSize="2rem">
+        Time left: {timeLeft}
+      </Text>
+    </Box>
   );
 };
 

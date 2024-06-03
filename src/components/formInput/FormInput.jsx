@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
-
 import { useContext } from "react";
-import styles from "./FormInput.module.css";
+import { Box, Text, Input, FormControl } from "@chakra-ui/react";
 import { AppContext } from "../../context/AppContext";
 
 const FormInput = () => {
-  const { text, input, setInput, textImported, finished } =
+  const { text, input, setInput, textImported, finished, startTime } =
     useContext(AppContext);
   let textArray = text.split("");
   textArray = textArray.slice(1);
@@ -13,37 +11,53 @@ const FormInput = () => {
   const formattedText = textArray.map((char, index) => {
     let color = "";
     if (index < input.length) {
-      color = char === input[index] ? styles.correct : styles.wrong;
+      color = char === input[index] ? "green.500" : "red.500";
     }
 
     return (
-      <span key={`${char}_${index}`} className={color}>
+      <Text as="span" key={`${char}_${index}`} color={color}>
         {char}
-      </span>
+      </Text>
     );
   });
 
   return (
-    <div className={!textImported ? "hidden" : ""}>
-      <div className={styles.container}>
-        <div className={styles.textDisplay}>
-          <h3>{formattedText}</h3>
-        </div>
-        <div className={styles.formField}>
-          <form>
-            <div>
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                disabled={finished ? true : false}
-                placeholder="Type here..."
-              />
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <Box
+      display={!textImported ? "none" : "block"}
+      maxWidth="50rem"
+      m="1rem auto"
+      p="1rem"
+      backgroundColor="gray.100"
+      border="2px solid"
+      borderColor="gray.500"
+      borderRadius="0.5rem"
+      fontFamily="Karla"
+    >
+      <Box m="1rem auto" maxWidth="90%" wordWrap="break-word" textAlign="left">
+        <Text as="h3" color="black.500" fontSize="1.1rem">
+          {formattedText}
+        </Text>
+      </Box>
+      <FormControl m="1rem auto">
+        <Input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          isDisabled={finished || !startTime}
+          placeholder="Type here..."
+          p="1rem"
+          width="70%"
+          bg="white"
+          border="2px solid"
+          borderColor="gray.500"
+          borderRadius="0.25rem"
+          fontSize="1.1rem"
+          _hover={{ borderColor: "black.600" }}
+          _focus={{ borderColor: "black.400" }}
+          m="1rem"
+        />
+      </FormControl>
+    </Box>
   );
 };
 

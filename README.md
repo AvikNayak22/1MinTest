@@ -15,7 +15,7 @@
 ## Technologies Used
 - React.js
 - Axios
-- CSS Modules
+- Chakra UI
 - [Quotable API](https://github.com/lukePeavey/quotable)
 
 ## Installation

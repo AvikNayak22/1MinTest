@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { AppContext } from "../../context/AppContext";
 
 const Results = () => {
@@ -32,11 +32,17 @@ const Results = () => {
       fontFamily="Karla"
       padding="1rem"
       maxWidth="300px"
-      fontSize="1rem"
+      fontSize="1.3rem"
     >
-      <Box as="h2">Total: {totalWords}</Box>
-      <Box as="h2">Correct: {correctWords}</Box>
-      <Box as="h2">Accuracy: {accuracy} %</Box>
+      <Text as="h2" size="md">
+        Total: {totalWords}
+      </Text>
+      <Text as="h2" size="md">
+        Correct: {correctWords}
+      </Text>
+      <Text as="h2" size="md">
+        Accuracy: {accuracy} %
+      </Text>
     </Box>
   );
 };

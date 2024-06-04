@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Box, Heading, Button, Stack } from "@chakra-ui/react";
 import TextGenerator from "../components/textGenerator/TextGenerator";
 import FormInput from "../components/formInput/FormInput";
@@ -9,6 +9,12 @@ import { AppContext } from "../context/AppContext";
 const HomePage = () => {
   const { textImported, startTime, setStartTime, finished } =
     useContext(AppContext);
+
+  useEffect(() => {
+    if (finished) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, [finished]);
 
   return (
     <Box textAlign="center" p={5}>
